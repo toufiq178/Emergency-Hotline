@@ -1,9 +1,12 @@
 console.log("hello js");
 
+let copyTotalCount = 0;
+let heartTotalCount = 0;
+
 const heartCount = document.getElementById("heart-count");
+const allCopyCount = document.getElementById("all-copy-count");
 
 
-let count = 0;
 
 
 document.querySelectorAll(".heart-icon").forEach((item) => {
@@ -27,6 +30,16 @@ document.querySelectorAll(".heart-icon").forEach((item) => {
         item.classList.remove("fa-regular")
     }
 
-    heartCount.innerText = count;
+    heartCount.innerText = heartTotalCount;
   });
 });
+
+document.querySelectorAll(".copy-btn").forEach(item => {
+
+    item.addEventListener("click" , function () {
+        
+        copyTotalCount++
+
+        allCopyCount.innerText = `${copyTotalCount} copy`
+    })
+})
