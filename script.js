@@ -8,6 +8,7 @@ const heartCount = document.getElementById("heart-count");
 const allCopyCount = document.getElementById("all-copy-count");
 const coins = document.getElementById("coins");
 const historyContainer = document.getElementById("history-container");
+const emptyMassage = document.getElementById("empty-massage");
 
 document.querySelectorAll(".heart-icon").forEach((item) => {
   // console.log(item);
@@ -100,8 +101,12 @@ document
   });
 
 function displayCallHistory(serviceName, serviceNumber) {
-  
-  historyContainer.innerHTML = "";
+
+  if (historyContainer.children.length === 0) {
+    
+    emptyMassage.classList.remove("hidden")
+  }
+  emptyMassage.classList.add("hidden")
 
   const now = new Date();
   const time = now.toLocaleTimeString("en-US", {
