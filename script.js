@@ -63,8 +63,8 @@ document
     if (e.target.classList.contains("copy-btn")) {
       console.log(allCopyCount);
 
-      if (copyTotalCount == 3) {
-        alert("you have copy already 3 services");
+      if (copyTotalCount >= 3) {
+        alert("You already copied 3 services");
         return;
       }
 
@@ -73,9 +73,9 @@ document
       allCopyCount.innerText = `${copyTotalCount} copy`;
 
       navigator.clipboard
-        .writeText(serviceName)
+        .writeText(serviceNumber)
         .then(() => {
-          console.log("Copied:", serviceName);
+          console.log("Copied:", serviceNumber);
         })
         .catch((err) => {
           console.error("Failed to copy:", err);
@@ -87,11 +87,11 @@ document
     // console.log(serviceName , "click sevice name" , serviceNumber , "click service number");
 
     if (e.target.classList.contains("call-btn")) {
-      coins.innerHTML = "";
-      console.log("call btn click");
+
+
 
       if (totalCoins < 20) {
-        alert("you need more coins to call");
+         alert("You need more coins to call");
 
         coins.innerHTML = totalCoins;
         return;
@@ -108,7 +108,12 @@ function displayCallHistory(serviceName, serviceNumber) {
   const div = document.createElement("div");
 
   const now = new Date();
-  const time = now.toLocaleTimeString();
+
+  const time = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 
   console.log(time);
   div.innerHTML = `
