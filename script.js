@@ -28,8 +28,6 @@ document.querySelectorAll(".heart-icon").forEach((item) => {
   });
 });
 
-
-
 // document.querySelectorAll(".call-btn").forEach((callBtn) => {
 //   callBtn.addEventListener("click", function () {
 //     coins.innerHTML = "";
@@ -87,11 +85,8 @@ document
     // console.log(serviceName , "click sevice name" , serviceNumber , "click service number");
 
     if (e.target.classList.contains("call-btn")) {
-
-
-
       if (totalCoins < 20) {
-         alert("You need more coins to call");
+        alert("You need more coins to call");
 
         coins.innerHTML = totalCoins;
         return;
@@ -105,17 +100,18 @@ document
   });
 
 function displayCallHistory(serviceName, serviceNumber) {
-  const div = document.createElement("div");
+  
+  historyContainer.innerHTML = "";
 
   const now = new Date();
-
   const time = now.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   });
+  // console.log(time);
 
-  console.log(time);
+  const div = document.createElement("div");
   div.innerHTML = `
     <div class="flex justify-between items-center bg-gray-100 p-5 rounded-2xl">
                             <div>
@@ -131,3 +127,7 @@ function displayCallHistory(serviceName, serviceNumber) {
 
   historyContainer.appendChild(div);
 }
+
+document.getElementById("clearBtn").addEventListener("click", function () {
+  historyContainer.innerHTML = `<p class="text-center mt-10 text-2xl text-gray-400"> History is empty.</p>`;
+});
